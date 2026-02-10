@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://j5ticycjnulr"]
+
+[ext_resource type="PackedScene" uid="uid://bnwebcvxw0mth" path="res://Scenes/dino.tscn" id="1_ukkyb"]
+
+[node name="Node2D" instance=ExtResource("1_ukkyb")]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://7oci604l7mbg"]
+
+[ext_resource type="Texture2D" uid="uid://b52mfeoeiuoeg" path="res://Assets/background/midground_/spring_.png" id="1_w6hkj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8bxr"]
+size = Vector2(28.5, 9)
+
+[node name="PlatformDirt" type="AnimatableBody2D"]
+position = Vector2(-18, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(18, -5)
+scale = Vector2(0.86830556, 1.0590278)
+texture = ExtResource("1_w6hkj")
+region_enabled = true
+region_rect = Rect2(95.95629, 167.05699, 32.00242, 9.034821)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18, -5)
+shape = SubResource("RectangleShape2D_s8bxr")
+one_way_collision = true
