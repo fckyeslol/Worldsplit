@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://df455482bxn4d"]
+
+[ext_resource type="Script" uid="uid://dller6hq7hjcv" path="res://Scenes/door.gd" id="1_p0e35"]
+[ext_resource type="Texture2D" uid="uid://c20fh7adsiycc" path="res://Assets/objects_/doorclosed.jpeg" id="1_w6aom"]
+[ext_resource type="Texture2D" uid="uid://dk3k014mauf3u" path="res://Assets/objects_/dooropen.jpeg" id="3_a43ba"]
+[ext_resource type="Texture2D" uid="uid://dvcn0xix2w100" path="res://Assets/objects_/mid1.jpeg" id="4_burcv"]
+[ext_resource type="Texture2D" uid="uid://0e08yc5eixjg" path="res://Assets/objects_/mid2.jpeg" id="5_kj2pw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0e35"]
+atlas = ExtResource("1_w6aom")
+region = Rect2(0, 0, 922, 595)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c32u"]
+atlas = ExtResource("3_a43ba")
+region = Rect2(0, 0, 1007, 647)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovubi"]
+atlas = ExtResource("4_burcv")
+region = Rect2(0, 0, 697, 696)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl2j7"]
+atlas = ExtResource("5_kj2pw")
+region = Rect2(0, 0, 763, 707)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fahql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0e35")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c32u")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovubi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl2j7")
+}],
+"loop": true,
+"name": &"opening",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0e35"]
+size = Vector2(90.140625, 55.359375)
+
+[node name="door" type="Node2D"]
+script = ExtResource("1_p0e35")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1.7881393e-07)
+scale = Vector2(0.068892755, 0.05660742)
+sprite_frames = SubResource("SpriteFrames_fahql")
+animation = &"closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2, 2)
+shape = SubResource("RectangleShape2D_p0e35")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

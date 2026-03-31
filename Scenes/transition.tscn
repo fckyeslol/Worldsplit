@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://cyu140ik1n6lo"]
+
+[ext_resource type="Script" uid="uid://ciuvk3yf6sm7a" path="res://Scenes/transition.gd" id="1_jnsx0"]
+[ext_resource type="Texture2D" uid="uid://1826k1mqraw" path="res://Assets/objects_/Dimensional_Portal.png" id="2_ah04o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlteq"]
+atlas = ExtResource("2_ah04o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nmoj"]
+atlas = ExtResource("2_ah04o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nshyj"]
+atlas = ExtResource("2_ah04o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y44x"]
+atlas = ExtResource("2_ah04o")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkumt"]
+atlas = ExtResource("2_ah04o")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7ldf"]
+atlas = ExtResource("2_ah04o")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jnsx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlteq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nmoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nshyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y44x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkumt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7ldf")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ah04o"]
+radius = 7.0
+height = 46.0
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_jnsx0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.999999, -5)
+rotation = 1.5707964
+scale = Vector2(1.100463, 1.5475402)
+sprite_frames = SubResource("SpriteFrames_jnsx0")
+animation = &"open"
+autoplay = "open"
+frame_progress = 0.7532233
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ah04o")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

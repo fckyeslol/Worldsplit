@@ -1,0 +1,8 @@
+.godot/
+.import/
+*.import
+*.wasm
+*.pck
+*.js
+*.html
+*.zip

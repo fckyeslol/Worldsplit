@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://kelu2v5bqj1c"]
+
+[ext_resource type="PackedScene" uid="uid://ca3fq4wsj6u43" path="res://Scenes/devil.tscn" id="1_j2wod"]
+
+[node name="Node2D" instance=ExtResource("1_j2wod")]

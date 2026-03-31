@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://dcm0rug3w03oh"]
+
+[ext_resource type="Texture2D" uid="uid://c3onyd20fjd54" path="res://Assets/Player/desertSprites_ [version 1.0]/bandit_.png" id="1_ct0k0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gtg8"]
+atlas = ExtResource("1_ct0k0")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnwwu"]
+atlas = ExtResource("1_ct0k0")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hy67o"]
+atlas = ExtResource("1_ct0k0")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10l3x"]
+atlas = ExtResource("1_ct0k0")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcjao"]
+atlas = ExtResource("1_ct0k0")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b03yx"]
+atlas = ExtResource("1_ct0k0")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p87bj"]
+atlas = ExtResource("1_ct0k0")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1e74"]
+atlas = ExtResource("1_ct0k0")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1e74"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gtg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnwwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hy67o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10l3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcjao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b03yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p87bj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1e74")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18t3q"]
+size = Vector2(12.5, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44ii4"]
+size = Vector2(14.5, 19)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5, -9)
+scale = Vector2(1.375, 1.2692307)
+sprite_frames = SubResource("SpriteFrames_f1e74")
+autoplay = "default"
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(6, -5)
+target_position = Vector2(12, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(5, -5)
+target_position = Vector2(-14, 0)
+
+[node name="Killzone" type="Area2D" parent="."]
+disable_mode = 1
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(5, -7)
+shape = SubResource("RectangleShape2D_18t3q")
+
+[node name="AttackArea" type="Area2D" parent="."]
+disable_mode = 1
+collision_layer = 16
+collision_mask = 40
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(5, -6)
+shape = SubResource("RectangleShape2D_44ii4")
