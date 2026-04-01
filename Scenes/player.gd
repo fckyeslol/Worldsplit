@@ -75,8 +75,8 @@ func _physics_process(delta: float) -> void:
 	if is_rolling:
 		roll_timer -= delta
 
-		var facing := -1.0 if animated_sprite.flip_h else 1.0
-		velocity.x = facing * ROLL_SPEED
+		velocity.y = -ROLL_SPEED
+		velocity.x = 0
 
 		if animated_sprite.animation != ROLL_ANIMATION:
 			animated_sprite.play(ROLL_ANIMATION)
@@ -146,8 +146,8 @@ func _start_roll() -> void:
 
 	current_stamina = max(0.0, current_stamina - ROLL_STAMINA_COST)
 
-	var facing := -1.0 if animated_sprite.flip_h else 1.0
-	velocity.x = facing * ROLL_SPEED
+	velocity.y = -ROLL_SPEED
+	velocity.x = 0
 
 	animated_sprite.play(ROLL_ANIMATION)
 	
